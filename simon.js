@@ -5,6 +5,8 @@ var playerClickCount = 0;
 var round = 0;
 var highScore = 0;
 
+//test old
+
 function randomColor() {
   var random = Math.floor(Math.random() * 4 + 1);
   var color = null;
