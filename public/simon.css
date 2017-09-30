@@ -1,0 +1,363 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  background-color: #e0dfdf;
+}
+
+#simon{
+  margin: auto;
+  max-width: 315px;
+  border: 2px solid white;
+  background-color: #5a5656;
+  border-radius: 10%;
+}
+
+#container {
+  width: 100%;
+  max-width: 240px;
+  margin: 25px;
+  padding: 10px;
+  border: 4px solid white;
+  border-radius: 50%;
+  background-color: #222222;
+  overflow: auto;
+}
+
+#container > div {
+  margin: 10px;
+  border: 4px solid white;
+  width: 100px;
+  line-height: 100px;
+  float: left;
+  text-align: center;
+  color: white;
+  box-sizing: border-box;
+}
+
+.green {
+  background-color: green;
+  border-top-left-radius: 100%;
+}
+
+.red {
+  background-color: red;
+  border-top-right-radius: 100%;
+}
+
+.yellow {
+  background-color: yellow;
+  border-bottom-left-radius: 100%;
+}
+
+.blue {
+  background-color: blue;
+  border-bottom-right-radius: 100%;
+}
+
+#gameStats {
+  margin: 25px;
+}
+
+#start {
+  float: left;
+}
+
+.transition,
+.box:hover {
+  -webkit-box-shadow: 0px 0px 15px 5px orange;
+  -moz-box-shadow: 0px 0px 15px 5px orange;
+  box-shadow: 0px 0px 15px 5px orange;
+}
+
+#status {
+  margin: 25px;
+  padding: 10px;
+  background-color: white;
+  width: 240px;
+}
+
+#staticText {
+  float: left;
+  font-size: 25px;
+}
+
+#display {
+  left: 15px;
+  font-size: 25px;
+  position: relative;
+}
+
+#scores {
+  margin: 25px;
+  padding: 10px;
+  background-color: white;
+  width: 241px;
+}
+
+#footer{
+  font-family: 'Josefin Sans', sans-serif;
+  position: relative;
+  color: white;
+  text-align: center;
+  font-size: 12px;
+  font-weight: normal;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+@-webkit-keyframes demo {
+  0% {
+    background-color: ##FFF5EE;
+    opacity: 1;
+  }
+  22% {
+    background-color: #FEFCFF;
+  }
+  77% {
+    background-color: white;
+  }
+  100% {
+    background-color: #C0C0C0;
+  }
+}
+
+.demo {
+  -webkit-animation-name: demo;
+  -webkit-animation-duration: 400ms;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: ease-in-out;
+}
+
+
+/*
+//Cool Glow effect to incorporate
+//https://codepen.io/FelixRilling/pen/qzfoc
+@import "compass/css3";
+@font-face {
+  font-family: 'Pacifico';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Pacifico Regular'), local('Pacifico-Regular'), url
+
+(http://themes.googleusercontent.com/static/fonts/pacifico/v5/yunJt0R8tCvMyj_V4xSjafesZW2xOQ-
+
+xsNqO47m55DA.woff) format('woff');
+}
+
+.box {
+  text-align: center;
+  font-size: 1.5em;
+  margin: 20px 0 20px 0;
+}
+
+//Mixin ahoy
+//usage: @include glow([colorInCSSFormat, offsetX offsetY, sizeOfGlow, fallOffStepSize])
+@mixin glow($name, $color: rgb(255, 221, 27), $offset: 0 0, $size: 10px, $step: 10px){
+  @include animation($name 1.5s ease-in-out infinite alternate);
+  @include keyframes($name) {
+    from {
+      text-shadow: $offset $size rgba($color,1),
+                   $offset $size+$step*2 rgba($color,1),
+                   $offset $size+$step*3  rgba($color,0.95),
+                   $offset $size+$step*4  rgba($color,0.90),
+                   $offset $size+$step*6  rgba($color,0.80),
+                   $offset $size+$step*7  rgba($color,0.70),
+                   $offset $size+$step*9 rgba($color,0.50),
+                   $offset $size+$step*11 rgba($color,0.2),
+    }
+    to {
+    text-shadow: $offset $size rgba($color,1),
+                 $offset $size+$step*2 rgba($color,0.9),
+                 $offset $size+$step*3  rgba($color,0.7),
+                 $offset $size+$step*4  rgba($color,0.6),
+                 $offset $size+$step*6  rgba($color,0.5),
+                 $offset $size+$step*7  rgba($color,0.2),
+                 $offset $size+$step*9 rgba($color,0),
+                 $offset $size+$step*11 rgba($color,0),
+    }
+  }
+}
+
+//Now apply it:
+.box {
+  text-decoration:none;
+  color:rgb(20, 151, 232);
+  font-family:Pacifico;
+  @include transition(all 0.5s);
+}
+.box:hover{
+  color:rgba(255,255,255,0.8);
+  @include glow(neon, rgb(20, 151, 232), $step: 20px);
+}
+*/
+
+
+  .delButton,#fts {
+      position: relative;
+}
+
+table {
+  margin: 0 auto;
+  border: 2px solid green;
+  margin-top: 35px;
+  font-size: 20px;
+}
+
+th {
+  background: #a7bbe0;
+  font-weight: bold;
+  font-size:20px;
+}
+
+
+tr:nth-child(even) {
+  background: #d4d4d4;
+}
+
+th, td {
+  padding: 3.5px 10.5px;
+}
+
+
+#fail {
+  position: absolute;
+  width:400px;
+  height:100%;
+  line-height: 50%;
+  text-align:center;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  font-size:75px;
+  color:#ffffff;
+  display:none;
+}
+
+#fail span {
+  font-size:30px;
+}
+
+#fail:hover {
+  cursor:pointer;
+}
+
+.popup {
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* The actual popup */
+.popup .popuptext {
+    visibility: hidden;
+    margin-top: 60px;
+    margin-left: -20px;
+    width: 355px;
+    height: 315px;
+    background-color: #716a6a;
+    color: #fff;
+    font-size:25px;
+    opacity: 0.9;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+}
+
+.popuptext{
+   padding: 25px;
+}
+
+/* Toggle this class - hide and show the popup */
+.popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 0.9;}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 0.9;}
+}
+
+
+#head{
+    top: 15px;
+    position: relative;
+    margin-bottom: 15px;
+}
+
+#status {
+  margin: auto;
+  position: relative;
+  background-color: black;
+  width: 260px;
+  height: 35px;
+  line-height: 35px;
+  text-align: left;
+  color: #5cf533;
+  font-size: 25px;
+  font-weight: bold;
+  border-radius: 10px;
+}
+
+#staticText {
+  margin-right: 10px;
+  position: relative;
+  color: white;
+  float: left;
+}
+
+#round{
+  float: left;
+  font-size: 35px;
+  position: relative;
+  color: red;
+}
+
+#display {
+  font-size: 25px;
+  position: relative;
+}
+
+
+#logo{
+  margin-top: 15px;
+  width: 200px;
+  height:50px;
+  border-radius: 10px;
+}
+
+#buttons{
+  margin: auto;
+}
+
+button{
+    height:20px;
+	width:70px;
+	background-color:#cc0000;
+	font-family:arial;
+	font-weight:bold;
+	line-height: 20px;
+	color:#ffffff;
+	border-radius: 100px;
+	text-align:center;
+	margin-top:2px;
+}
+
+#logo:hover{
+  -webkit-box-shadow: 0px 0px 15px 5px #f2e1f2;
+  -moz-box-shadow: 0px 0px 15px 5px #f2e1f2;
+  box-shadow: 0px 0px 15px 5px #f2e1f2;
+}
