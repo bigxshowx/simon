@@ -4,20 +4,28 @@ var player = [];
 var playerClickCount = 0;
 var round = 0;
 var highScore = 0;
+var stats = 0;
 
 function randomColor() {
   var random = Math.floor(Math.random() * 4 + 1);
   var color = null;
   if (random === 1) {
-    color = 'green';
+    color = ' G';
   } else if (random === 2) {
-    color = 'red';
+    color = ' R';
   } else if (random === 3) {
-    color = 'yellow';
+    color = ' Y';
   } else if (random === 4) {
-    color = 'blue';
+    color = ' B';
   }
   return color;
+}
+
+var colors= {
+  ' G': 'green',
+  ' R': 'red',
+  ' Y': 'yellow',
+  ' B': 'blue'
 }
 
 function computerTurn() {
@@ -25,7 +33,7 @@ function computerTurn() {
 }
 
 function playerClick(str) {
-  player.push(str.substr(4));
+  player.push(' ' + str.substr(4,1).toUpperCase());
   $("#player").text(player);
 }
 
@@ -38,9 +46,9 @@ function compare() {
 }
 
 function blink(color) {
-  $("." + color).removeClass("demo");
+  $("." + colors[color]).removeClass("demo");
   setTimeout(function() {
-    $("." + color).addClass("demo");
+    $("." + colors[color]).addClass("demo");
   }, 550); //controlls animation time should be > transition time
 }
 
@@ -73,8 +81,10 @@ function firstAndLastTurn() {
     //$("#display").text("Correct !!");
     playBack();
   } else {
-    $("#display").text("You LOSE! ! !");
+    $("#display").text("You LOSE!");
     $("#compare").text("False");
+    popUp();
+    document.getElementById('myScore').value = round.parseInt();
   }
 }
 
@@ -85,8 +95,10 @@ function compareSingle() {
     $("#compare").text('True');
     //$("#display").text('Correct!');
   } else {
-    $("#display").text("You LOSE!!");
+    $("#display").text("You LOSE!");
     $("#compare").text('False');
+    popUp();
+    document.getElementById('myScore').value = round;
   }
 }
 
@@ -100,13 +112,21 @@ function playerTurn() {
   }
 }
 
+function popUp() {
+    var popup = document.getElementById("myPopup");
+    popup.classList.toggle("show");
+    $("#score").text(round);
+    $("#computer1").text('Computer: ' + computer);
+    $("#player1").text('You: ' + player);
+}
+
 //JQuery Game-Flow
 $(document).ready(function() {
 
   $("#start").click(function() {
     computerTurn();
     playBack();
-    round++;
+    //round++;
     $("#computer").text(computer);
     $("#display").text("Let's Play!"); //or --> alert("Your Turn");
     $("#round").text(round);
@@ -118,9 +138,9 @@ $(document).ready(function() {
     substr = $(this).attr('class');
     playerClick(substr);
     playerTurn();
-    //$("#display").text('Round: '+round);
   });
 
+/*
   $("#reset").click(function() {
     computer = [];
     player = [];
@@ -134,26 +154,26 @@ $(document).ready(function() {
     $("#round").text("--");
     $(".box").css("box-shadow", "none");
   });
+*/
 
+  $("#stats").click(function() {
+      if (stats){
+        $("#gameStats").hide();
+        stats = 0;
+      } else {
+        $("#gameStats").show();
+        stats = 1;
+      }
 
-  $("#test").click(function() {
-
-     //$("#fail").show();
-     //$("#fail").addClass("bigEntrance");
-       myFunction();
   });
 
-    $("#fail").on("click", function() {
-        $("#fail").hide();
-    });
+    $("#logo").click(function() {
+        //plant an easter egg, whatever...
+    })
 
+  $("#dev").click(()=>{$(".popup").hide()})
 
 });
-
-function myFunction() {
-    var popup = document.getElementById("myPopup");
-    popup.classList.toggle("show");
-}
 
 //add class constructor for user and highscore
 //make it overwrite any previous scores, make it list highscore and option for all scores?

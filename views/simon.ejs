@@ -1,48 +1,43 @@
 <html>
 <head>
 <title>SiMoN</title>
-<link id="css" rel="stylesheet" type="text/css" href="styles.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link id="css" rel="stylesheet" type="text/css" href="simon.css">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
 <body>
 
-<!-- responsive DIVs: https://codepen.io/anon/pen/wePWva -->
-    <div id='gameStats' margin="10px">
-      <div id="computer">---</div>
-      <div id="player">---</div>
-      <div id="compare">---</div>
-      <br>
-      <button id="test">test</button>
-    </div>
-
-
 <div id="simon">
 
  <div id="img">
-      <center><img id="logo" src="simon.JPG" alt="sImOn"></center>
+      <center><img id="logo" src="simon_logo.jpg" alt="sImOn"></center>
  </div>
 
 <div class="popup">
-  <span class="popuptext" id="myPopup">Game Over :(
-  <h4>Save Score & Retry!</h4>
-  <form>
-    <input type="text" name="name" placeholder="enter name to delete">
-    <button id="delButton">Submit</button>
-  </form>
+  <span class="popuptext" id="myPopup"><p>Game Over :(</p>
+  Save Score & Retry!
+  <div id="score"></div>
+    <form action="/score" method="POST">
+        <input type="text" name="name" id="name" placeholder="Enter Name">
+        <input type="hidden" name="score" id="myScore" value=>
+        <button type="submit">Submit</button>
+        <p id="computer1">-</p>
+        <p id="player1">-</p>
+    </form>
 </span>
 </div>
 
   <div id="head">
     <div id="status">
-      <div id="staticText"><b>Round:</b></div>
-      <div id="round">-</div>
+      <div id="staticText"><b>Score:</b></div>
+      <div id="round">--</div>
       <div id="display">Press Start :)</div>
     </div>
 </div>
 
 <div id="buttons">
-      <button id="start">start</button>
-      <button id="reset">reset</button>
+      <button id="start">START</button>
+      <button id="stats"><em>STATS</em></button>
 </div>
 
     <div id="container">
@@ -51,6 +46,7 @@
       <div class="box yellow">Y</div>
       <div class="box blue">B</div>
     </div>
+</div>
 
   <footer id="footer">
     Coded & Designed by
@@ -58,9 +54,8 @@
         Tony Randazzo</a>
   </footer>
 
-</div>
 
-<center>high scores</center>
+<h1><em>High Scores</em></h1>
 
 <table class="score">
    <thread>
@@ -70,13 +65,32 @@
     	  <th>Date</th>
     	</tr>
    </thread>
-
+   <tbody>
+      <% for(var i=0; i < score.length; i++) { %>
+         <tr>
+           <td><%= score[i].name %></td>
+           <td><center><%= score[i].score %></center></td>
+           <td><%= score[i].time %></td>
+         </tr>
+      <% } %>
+   </tbody>
 </table>
 <br>
-<div id="fail">Game Over!<br><span>Enter name to Save Score & Retry!</span></div>
 
+<div id="gameStats" margin="10px">
+      <hr>
+      <h1>Game Stats!</h1>
+  <!-- responsive DIVs: https://codepen.io/anon/pen/wePWva -->
+      <center>
+        <div id="computer">---</div>
+        <div id="player">---</div>
+        <div id="compare">---</div>
+        <button id="dev">popUp</button>
+    </center>
+<br>
+</div>
 
-
-<script src="main.js"></script>
+<script src="simon.js"></script>
 </body>
 </html>
+

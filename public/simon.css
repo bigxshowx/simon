@@ -2,7 +2,9 @@ html,
 body {
   height: 100%;
   margin: 0;
-  background-color: #e0dfdf;
+  /*background-color: #e0dfdf;*/
+  background-color: black;
+  margin-top: 10px;
 }
 
 #simon{
@@ -16,9 +18,9 @@ body {
 #container {
   width: 100%;
   max-width: 240px;
-  margin: 25px;
+  margin: 0px 25px 15px 25px;
   padding: 10px;
-  border: 4px solid white;
+  border: 3px solid white;
   border-radius: 50%;
   background-color: #222222;
   overflow: auto;
@@ -26,7 +28,7 @@ body {
 
 #container > div {
   margin: 10px;
-  border: 4px solid white;
+  border: 3px solid white;
   width: 100px;
   line-height: 100px;
   float: left;
@@ -46,7 +48,7 @@ body {
 }
 
 .yellow {
-  background-color: yellow;
+  background-color: #d0d013;
   border-bottom-left-radius: 100%;
 }
 
@@ -56,7 +58,9 @@ body {
 }
 
 #gameStats {
-  margin: 25px;
+  left: 25px;
+  color: white;
+  display: none;
 }
 
 #start {
@@ -96,14 +100,19 @@ body {
 }
 
 #footer{
+  margin-top: 5px;
   font-family: 'Josefin Sans', sans-serif;
   position: relative;
-  color: white;
+  color: #b5aaaa;
   text-align: center;
   font-size: 12px;
   font-weight: normal;
   margin-bottom: 10px;
   width: 100%;
+}
+
+a {
+  color: #9cc53e;
 }
 
 @-webkit-keyframes demo {
@@ -129,118 +138,33 @@ body {
   -webkit-animation-timing-function: ease-in-out;
 }
 
-
-/*
-//Cool Glow effect to incorporate
-//https://codepen.io/FelixRilling/pen/qzfoc
-@import "compass/css3";
-@font-face {
-  font-family: 'Pacifico';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Pacifico Regular'), local('Pacifico-Regular'), url
-
-(http://themes.googleusercontent.com/static/fonts/pacifico/v5/yunJt0R8tCvMyj_V4xSjafesZW2xOQ-
-
-xsNqO47m55DA.woff) format('woff');
-}
-
-.box {
-  text-align: center;
-  font-size: 1.5em;
-  margin: 20px 0 20px 0;
-}
-
-//Mixin ahoy
-//usage: @include glow([colorInCSSFormat, offsetX offsetY, sizeOfGlow, fallOffStepSize])
-@mixin glow($name, $color: rgb(255, 221, 27), $offset: 0 0, $size: 10px, $step: 10px){
-  @include animation($name 1.5s ease-in-out infinite alternate);
-  @include keyframes($name) {
-    from {
-      text-shadow: $offset $size rgba($color,1),
-                   $offset $size+$step*2 rgba($color,1),
-                   $offset $size+$step*3  rgba($color,0.95),
-                   $offset $size+$step*4  rgba($color,0.90),
-                   $offset $size+$step*6  rgba($color,0.80),
-                   $offset $size+$step*7  rgba($color,0.70),
-                   $offset $size+$step*9 rgba($color,0.50),
-                   $offset $size+$step*11 rgba($color,0.2),
-    }
-    to {
-    text-shadow: $offset $size rgba($color,1),
-                 $offset $size+$step*2 rgba($color,0.9),
-                 $offset $size+$step*3  rgba($color,0.7),
-                 $offset $size+$step*4  rgba($color,0.6),
-                 $offset $size+$step*6  rgba($color,0.5),
-                 $offset $size+$step*7  rgba($color,0.2),
-                 $offset $size+$step*9 rgba($color,0),
-                 $offset $size+$step*11 rgba($color,0),
-    }
-  }
-}
-
-//Now apply it:
-.box {
-  text-decoration:none;
-  color:rgb(20, 151, 232);
-  font-family:Pacifico;
-  @include transition(all 0.5s);
-}
-.box:hover{
-  color:rgba(255,255,255,0.8);
-  @include glow(neon, rgb(20, 151, 232), $step: 20px);
-}
-*/
-
-
   .delButton,#fts {
       position: relative;
 }
 
 table {
   margin: 0 auto;
-  border: 2px solid green;
-  margin-top: 35px;
+  border: 2px solid white;
   font-size: 20px;
 }
 
 th {
-  background: #a7bbe0;
+  background: #2b4b86;
   font-weight: bold;
+  color: #c7bdbd;
   font-size:20px;
 }
-
 
 tr:nth-child(even) {
   background: #d4d4d4;
 }
 
+tr:nth-child(odd) {
+  background: #a7bbe0;
+}
+
 th, td {
   padding: 3.5px 10.5px;
-}
-
-
-#fail {
-  position: absolute;
-  width:400px;
-  height:100%;
-  line-height: 50%;
-  text-align:center;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  font-size:75px;
-  color:#ffffff;
-  display:none;
-}
-
-#fail span {
-  font-size:30px;
-}
-
-#fail:hover {
-  cursor:pointer;
 }
 
 .popup {
@@ -257,21 +181,40 @@ th, td {
     margin-top: 60px;
     margin-left: -20px;
     width: 355px;
-    height: 315px;
+    height: 350px;
     background-color: #716a6a;
     color: #fff;
-    font-size:25px;
+    font-size:35px;
     opacity: 0.9;
     text-align: center;
     border-radius: 6px;
-    padding: 8px 0;
+    padding: 4px 0;
     position: absolute;
     z-index: 1;
 }
 
-.popuptext{
-   padding: 25px;
+p {
+  margin-top: 25px;
 }
+
+#score{
+  font-size: 50;
+  font-weight: bold;
+  color: red;
+}
+
+#computer1{
+  font-size: 14;
+  font-weight: bold;
+  color: yellow;
+}
+
+#player1{
+  font-size: 14;
+  font-weight: bold;
+  color: yellow;
+}
+
 
 /* Toggle this class - hide and show the popup */
 .popup .show {
@@ -300,6 +243,7 @@ th, td {
 
 #status {
   margin: auto;
+  border: 2px solid white;
   position: relative;
   background-color: black;
   width: 260px;
@@ -307,7 +251,7 @@ th, td {
   line-height: 35px;
   text-align: left;
   color: #5cf533;
-  font-size: 25px;
+  font-family:arial;
   font-weight: bold;
   border-radius: 10px;
 }
@@ -321,13 +265,14 @@ th, td {
 
 #round{
   float: left;
+  width: 30px;
   font-size: 35px;
   position: relative;
   color: red;
 }
 
 #display {
-  font-size: 25px;
+  font-size: 20px;
   position: relative;
 }
 
@@ -344,20 +289,60 @@ th, td {
 }
 
 button{
-    height:20px;
-	width:70px;
-	background-color:#cc0000;
+  height:40px;
+	width:80px;
+	background-color:#2a3e63;
 	font-family:arial;
 	font-weight:bold;
+  font-size: 15px;
 	line-height: 20px;
-	color:#ffffff;
+	color:#e8e8e8;
 	border-radius: 100px;
 	text-align:center;
 	margin-top:2px;
 }
 
-#logo:hover{
+#start{
+  margin-left: 15px;
+  margin-top: 15px;
+  margin-right: 125px;
+}
+
+#stats{
+  margin-top: 15px;
+}
+
+h1{
+  text-align: center;
+  font-family:arial;
+  font-weight:bold;
+  color: white;
+  bottom: -15px;
+}
+
+#container:hover{
+   cursor: pointer;
+}
+
+button:focus {outline: none;}
+#container:focus {outline: none !important}
+
+button:hover{
   -webkit-box-shadow: 0px 0px 15px 5px #f2e1f2;
   -moz-box-shadow: 0px 0px 15px 5px #f2e1f2;
   box-shadow: 0px 0px 15px 5px #f2e1f2;
 }
+
+#name{
+    height:35px;
+    font-size: 14pt;
+    text-align: center;
+    font-weight: bold;
+    opacity: 1;
+    border: 2px solid black;
+}
+
+#submit{
+    opacity: 1;
+}
+

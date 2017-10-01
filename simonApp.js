@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
+const keys = require('./config/keys');
 let db;
 let plays;
 
@@ -15,12 +16,12 @@ app.use(bodyParser.json());
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
-MongoClient.connect('mongodb://tony:simon@ds161262.mlab.com:61262/simon_scores', (err, database) => {
+MongoClient.connect(keys.mongoDB, (err, database) => {
     if (err) console.log(err);
     db = database;
     //server start
-    app.listen(8081, function() {
-        console.log('listening on IDE 8081');
+    app.listen(5000, function() {
+        console.log('listening on IDE 5000');
     });
 });
 
@@ -28,9 +29,10 @@ app.get('/', function(req, res){
     //res.sendFile('/home/ubuntu/workspace/' + 'index.ejs');
     //var cursor = db.collection('crud').find();
     //var test = ['what', "the", 'Hell'];
-    db.collection('scores').find().toArray((err, results) => {
+    db.collection('scores').find().sort({"score":-1}).toArray((err, results) => {
         if (err) console.log(err);
        //console.log(results);
+       results.map((e)=>e.toString());
        res.render('simon.ejs', {score: results});
     });
     //res.render('index.ejs', {crud: test});
@@ -41,6 +43,7 @@ app.post("/score", (req, res) => {
     let setDate = new Date();
     let date = setDate.toString().substr(4,11);
     req.body.time = date;
+    req.body.score = parseInt(req.body.score);
     console.log(req.body);
     db.collection('scores').save(req.body, (err, result) => {
         if (err) console.log(err);
@@ -50,6 +53,7 @@ app.post("/score", (req, res) => {
 });
 
 app.put('/scores', (req, res) => {
+  req.body.score = parseInt(req.body.score);
   console.log(req.body);
   db.collection('scores')
   .findOneAndUpdate({name: req.body.name},{
@@ -80,6 +84,18 @@ app.delete('/scores', (req, res) => {
            //what other types of things can we send as the result?
            res.send({message: "\"" + req.body.name + "\"" + ' Entry has been deleted'});
        });
+});
+
+app.get('/db', function(req, res){
+    //res.sendFile('/home/ubuntu/workspace/' + 'index.ejs');
+    //var cursor = db.collection('crud').find();
+    //var test = ['what', "the", 'Hell'];
+    db.collection('scores').find().toArray((err, results) => {
+        if (err) console.log(err);
+       //console.log(results);
+       res.render('updateDB.ejs', {score: results});
+    });
+    //res.render('index.ejs', {crud: test});
 });
 
 //build server side AJAX Req response which returns the JSON db Array's length

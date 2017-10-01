@@ -1,24 +1,15 @@
 {
-  "name": "workspace",
+  "name": "Simon",
   "version": "1.0.0",
-  "description": "Server Side Testing",
-  "main": "app.js",
+  "description": "Simon Memory Game",
+  "main": "simonApp.js",
   "dependencies": {
-    "babel-loader": "^7.1.2",
-    "babel-preset-react": "^6.24.1",
     "body-parser": "^1.18.0",
-    "dev": "^0.1.3",
     "ejs": "^2.5.7",
-    "express": "^4.15.4",
-    "html-webpack-plugin": "^2.30.1",
-    "mongodb": "^2.2.31",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
-    "webpack": "^3.6.0",
-    "webpack-dev-server": "^2.8.2"
+    "express": "^4.16.1",
+    "mongodb": "^2.2.31"
   },
   "devDependencies": {
-    "babel-core": "^6.26.0",
     "nodemon": "^1.12.0"
   },
   "scripts": {

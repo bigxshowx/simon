@@ -1,11 +1,33 @@
 <html>
 <head>
 <title>CRUD</title>
-<link id="css" rel="stylesheet" type="text/css" href="simon.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
 <body>
-<center>high scores</center>
+  <style type="text/css">
+    table {
+      margin: 0 auto;
+      border: 2px solid green;
+      font-size: 20px;
+    }
+
+    th {
+      background: #a7bbe0;
+      font-weight: bold;
+      font-size:20px;
+    }
+
+
+    tr:nth-child(even) {
+      background: #d4d4d4;
+    }
+
+    th, td {
+      padding: 3.5px 10.5px;
+}</style>
+
+<center><h2>Manage High Scores DB</h2></center>
 <hr>
 
 <h4>Manually Add Score / Comment via Form</h4>
@@ -33,10 +55,11 @@
 <hr>
 <div class="hcButton">
   <button id="ajax" type="submit" onclick="sendAJAX(); return false;">AJAX</button>
-  <b>Ajax Call</b>
+  <b>Testing an Ajax Call</b>
   <div id="fts">...</div>
 </div>
 <hr>
+<center><a href="/"><h2>Go Back to Game</h2></a></center>
 <br>
 
 <table class="score">
@@ -59,9 +82,11 @@
 </table>
 <br>
   <footer id="footer">
-    Coded & Designed by
-    <a href="https://www.linkedin.com/in/arandazzo" target="_blank">
-        Tony Randazzo</a>
+    <center>
+      Coded & Designed by
+      <a href="https://www.linkedin.com/in/arandazzo" target="_blank">
+          Tony Randazzo</a>
+    </center> 
   </footer>
 
 <script src="/updateDB.js"></script>
