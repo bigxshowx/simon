@@ -16,12 +16,14 @@ app.use(bodyParser.json());
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
+const PORT = process.env.PORT || 5000;
+
 MongoClient.connect(keys.mongoDB, (err, database) => {
     if (err) console.log(err);
     db = database;
     //server start
-    app.listen(5000, function() {
-        console.log('listening on IDE 5000');
+    app.listen(PORT, function() {
+        console.log('listening on IDE' + PORT);
     });
 });
 
