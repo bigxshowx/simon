@@ -325,7 +325,9 @@ h1{
 }
 
 button:focus {outline: none;}
-#container:focus {outline: none !important}
+#container:focus{
+  outline: none !important
+}
 
 input:focus,
 select:focus,
