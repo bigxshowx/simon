@@ -140,7 +140,6 @@ $(document).ready(function() {
     playerTurn();
   });
 
-/*
   $("#reset").click(function() {
     computer = [];
     player = [];
@@ -154,8 +153,8 @@ $(document).ready(function() {
     $("#round").text("--");
     $(".box").css("box-shadow", "none");
   });
-*/
 
+/*
   $("#stats").click(function() {
       if (stats){
         $("#gameStats").hide();
@@ -166,6 +165,7 @@ $(document).ready(function() {
       }
 
   });
+*/
 
     $("#logo").click(function() {
         //plant an easter egg, whatever...

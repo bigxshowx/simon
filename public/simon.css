@@ -308,7 +308,7 @@ button{
   margin-right: 125px;
 }
 
-#stats{
+#reset{
   margin-top: 15px;
 }
 
@@ -326,6 +326,13 @@ h1{
 
 button:focus {outline: none;}
 #container:focus {outline: none !important}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    box-shadow: none !important;
+}
 
 button:hover{
   -webkit-box-shadow: 0px 0px 15px 5px #f2e1f2;
