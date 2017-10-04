@@ -121,7 +121,3 @@ app.put('/stats', function(req, res){
       }
    );
 });
-
-setInterval(function(){
-  http.get('www.tonyrandazzo.com');
-}, 480000);
