@@ -26,7 +26,7 @@ body {
   overflow: auto;
 }
 
-#container > div {
+.box {
   margin: 10px;
   border: 3px solid white;
   width: 100px;
@@ -36,6 +36,15 @@ body {
   color: white;
   box-sizing: border-box;
 }
+
+@media screen and (min-width: 800px) {
+  .box:hover{
+    -webkit-box-shadow: 0px 0px 15px 5px orange;
+    -moz-box-shadow: 0px 0px 15px 5px orange;
+    box-shadow: 0px 0px 15px 5px orange;
+  }
+}
+
 
 .green {
   background-color: green;
@@ -67,11 +76,13 @@ body {
   float: left;
 }
 
-.transition,
-.box:hover {
-  -webkit-box-shadow: 0px 0px 15px 5px orange;
-  -moz-box-shadow: 0px 0px 15px 5px orange;
-  box-shadow: 0px 0px 15px 5px orange;
+div {
+  -webkit-tap-highlight-color:  rgba(255, 255, 255, 0); 
+  -webkit-tap-highlight-color: transparent;
+  -moz-tap-highlight-color: rgba(255, 255, 255, 0); 
+  -moz-tap-highlight-color: transparent;
+  tap-highlight-color:  rgba(255, 255, 255, 0); 
+  tap-highlight-color: transparent;
 }
 
 #status {
@@ -317,24 +328,34 @@ h1{
   font-family:arial;
   font-weight:bold;
   color: white;
-  bottom: -15px;
+  margin-bottom: 15px;
 }
 
 #container:hover{
    cursor: pointer;
 }
 
+
 button:focus {outline: none;}
+
+
+/*
+input:focus,
+select:focus,
+button:focus, 
+textarea:focus
+
+*:focus {
+    outline: none;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
 #container:focus{
   outline: none !important
 }
-
-input:focus,
-select:focus,
-textarea:focus {
-    outline: none;
-    box-shadow: none !important;
-}
+*/
 
 button:hover{
   -webkit-box-shadow: 0px 0px 15px 5px #f2e1f2;

@@ -3,8 +3,8 @@ const app = express();
 const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
 const keys = require('./config/keys');
+const http = require('http');
 let db;
-let plays;
 
 //https://ide50-tony-rr.cs50.io:8081
 //apache50 start / , apache50 stop
@@ -23,21 +23,26 @@ MongoClient.connect(keys.mongoDB, (err, database) => {
     db = database;
     //server start
     app.listen(PORT, function() {
-        console.log('listening on IDE' + PORT);
+        console.log('listening on: ' + PORT);
     });
 });
 
 app.get('/', function(req, res){
-    //res.sendFile('/home/ubuntu/workspace/' + 'index.ejs');
-    //var cursor = db.collection('crud').find();
-    //var test = ['what', "the", 'Hell'];
+    //Page Views
+    db.collection('stats').findOneAndUpdate(
+      { name : "Simon_Views" },
+      { $inc : { "Total_Views" : 1 } },
+      { upsert: true },
+      (err, result) => {
+          if (err) console.log(err);
+    });
+    //Retrieve Scores to render
     db.collection('scores').find().sort({"score":-1}).toArray((err, results) => {
         if (err) console.log(err);
        //console.log(results);
        results.map((e)=>e.toString());
        res.render('simon.ejs', {score: results});
     });
-    //res.render('index.ejs', {crud: test});
 });
 
 app.post("/score", (req, res) => {
@@ -100,4 +105,23 @@ app.get('/db', function(req, res){
     //res.render('index.ejs', {crud: test});
 });
 
-//build server side AJAX Req response which returns the JSON db Array's length
+app.use(express.static('scripts'));
+
+app.get('/calculator', function(req, res){
+    res.render('calculator.ejs');
+});
+
+app.put('/stats', function(req, res){
+    db.collection('stats').findOneAndUpdate(
+      { name : "Simon_Plays" },
+      { $inc : { "Total_Plays" : 1 } },
+      { upsert: true },
+      (err, result) => {
+          if (err) console.log(err);
+      }
+   );
+});
+
+setInterval(function(){
+  http.get('www.tonyrandazzo.com');
+}, 480000);

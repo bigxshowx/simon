@@ -130,9 +130,16 @@ $(document).ready(function() {
     $("#computer").text(computer);
     $("#display").text("Let's Play!"); //or --> alert("Your Turn");
     $("#round").text(round);
+    fetch('stats', {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            'name': 'Simon_Stats'
+        })
+    });
   });
 
-  $('.box').click(function() {
+  $(".box").click(function() {
     $(".box").removeClass("demo");
     $(this).fadeOut(100).fadeIn(100)
     substr = $(this).attr('class');
@@ -165,12 +172,11 @@ $(document).ready(function() {
       }
 
   });
-*/
 
-    $("#logo").click(function() {
+  $("#logo").click(function() {
         //plant an easter egg, whatever...
-    })
-
+  })
+*/
   $("#dev").click(()=>{$(".popup").hide()})
 
 });
