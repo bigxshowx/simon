@@ -7,12 +7,8 @@ const keys = require('./config/keys');
 const http = require('http');
 let db;
 
-//https://ide50-tony-rr.cs50.io:8081
-//apache50 start / , apache50 stop
-//https://zellwk.com/blog/crud-express-and-mongodb-2/
 
 app.use(bodyParser.urlencoded({extended: true}));
- //our put request will send the body as a JSON (via stringify) this middle ware allows our server to read it
 app.use(bodyParser.json());
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
@@ -64,7 +60,6 @@ app.put('/scores', (req, res) => {
   console.log(req.body);
   db.collection('scores')
   .findOneAndUpdate({name: req.body.name},{
-      //  {name: req.body.name}
     $set: {
         score: req.body.score
       }
@@ -76,15 +71,13 @@ app.put('/scores', (req, res) => {
     (err, result) => {
         if (err) return res.send(err);
         res.send(result);
-        //res.send({message: 'sending from the server!'});
     });
 });
 
 app.delete('/scores', (req, res) => {
-   console.log('F the ' + req.body.name);
+   console.log('Deleted ' + req.body.name);
    db.collection('scores').findOneAndDelete(
        {name: req.body.name},
-       //find way to sort the score values instead of entry ID...
        {sort: {_id: -1} },
        function(err, result){
            if (err) return res.send(500, err);
@@ -94,15 +87,11 @@ app.delete('/scores', (req, res) => {
 });
 
 app.get('/db', function(req, res){
-    //res.sendFile('/home/ubuntu/workspace/' + 'index.ejs');
-    //var cursor = db.collection('crud').find();
-    //var test = ['what', "the", 'Hell'];
     db.collection('scores').find().toArray((err, results) => {
         if (err) console.log(err);
        //console.log(results);
        res.render('updateDB.ejs', {score: results});
     });
-    //res.render('index.ejs', {crud: test});
 });
 
 app.use(express.static('scripts'));
