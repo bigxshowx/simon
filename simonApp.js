@@ -1,3 +1,4 @@
+"use strict";
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
@@ -46,7 +47,6 @@ app.get('/', function(req, res){
 });
 
 app.post("/score", (req, res) => {
-    plays++;
     let setDate = new Date();
     let date = setDate.toString().substr(4,11);
     req.body.time = date;

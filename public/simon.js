@@ -26,7 +26,7 @@ var colors= {
   ' R': 'red',
   ' Y': 'yellow',
   ' B': 'blue'
-}
+};
 
 function computerTurn() {
   computer.push(randomColor());
@@ -62,7 +62,7 @@ function playBack() {
           clearInterval(interval);
           idx = 0; // for further use;
         }
-      }, 750) //this is the gap between intervals (each element animation)
+      }, 750); //this is the gap between intervals (each element animation)
      //$("#display").text("Your Turn");
   }, 1);
 }
@@ -70,7 +70,7 @@ function playBack() {
 
 function firstAndLastTurn() {
   if (computer[playerClickCount] === player[playerClickCount]) {
-    playerClickCount++
+    playerClickCount++;
     computerTurn();
     round++;
     player = [];
@@ -104,7 +104,7 @@ function compareSingle() {
 
 function playerTurn() {
   if (player.length < computer.length) {
-    compareSingle()
+    compareSingle();
   } else if (player.length === computer.length) {
     firstAndLastTurn();
     player = [];
@@ -141,7 +141,7 @@ $(document).ready(function() {
 
   $(".box").click(function() {
     $(".box").removeClass("demo");
-    $(this).fadeOut(100).fadeIn(100)
+    $(this).fadeOut(100).fadeIn(100);
     substr = $(this).attr('class');
     playerClick(substr);
     playerTurn();
@@ -177,7 +177,7 @@ $(document).ready(function() {
         //plant an easter egg, whatever...
   })
 */
-  $("#dev").click(()=>{$(".popup").hide()})
+  $("#dev").click(()=>{$(".popup").hide()});
 
 });
 
